@@ -81,10 +81,17 @@
                         <i class="icon-note menu-icon"></i>&nbsp;เพิ่มรายชื่อนิสิตทั้งหมด</span>
                     </a>
                 </li>
+                <li>
+                    <a class="menu-icon" href="./insertsubject.php" aria-expanded="false">
+                        <i class="icon-note menu-icon"></i>&nbsp;เพิ่มรายวิชาเรียน</span>
+                    </a>
+                </li>
+
+                
 
                 <li>
-                    <a class="menu-icon" href="./addNisit.php" aria-expanded="false">
-                        <i class="icon-note menu-icon"></i>&nbsp;เพิ่มรายชื่อนิสิต</span>
+                    <a class="menu-icon" href="./insertregis.php" aria-expanded="false">
+                        <i class="icon-note menu-icon"></i>&nbsp;เพิ่มการลงทะเบียนเรียน</span>
                     </a>
                 </li>
 

@@ -3,7 +3,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "dwcpekps";
+    $dbname = "dw";
 
     $conn = new mysqli($servername,$username,$password);
     $conn->set_charset("utf8");

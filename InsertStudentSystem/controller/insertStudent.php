@@ -19,34 +19,23 @@ fgetcsv($csvFile);
 // Parse data from CSV file line by line        
 while (($getData = fgetcsv($csvFile, 10000, ",")) !== FALSE) {
     // Get row data
-    $studentId = $getData[0];
-    $title = $getData[1];
-    $name = $getData[2];
-    $gender = $getData[3];
-    $generetion = $getData[4];
-    $departmentCode = $getData[5];
+    $studentId = $getData[1];
+    $title = $getData[2];
+    $name = $getData[3];
+    $startYear = $getData[4];
+    $accession = $getData[5];
 
 
+    //echo $title."<br>";
+    if($title == "นาย"){
+        $gender = "ชาย";
+    }elseif($title == "น.ส."){
+        $gender = "หญิง";
+    }
 
-    // get genterId
-    $genderSQL = "SELECT genderId FROM gender WHERE genderTh ='$gender'";
-    $result = $conn->query($genderSQL);
-    $genderId = $result->fetch_assoc()["genderId"];
-
-
-    // get generetionId
-    $generetionSQL = "SELECT generetionId FROM generetion WHERE generetion = $generetion";
-    $result = $conn->query($generetionSQL);
-    $generetionId = $result->fetch_assoc()["generetionId"];
-
-
-    //get departmentId
-    $departmentSQL = "SELECT departmentId FROM department WHERE departmentCode ='$departmentCode'";
-    $result = $conn->query($departmentSQL);
-    $departmentId = $result->fetch_assoc()["departmentId"];
-
-
-
+    //$gender = $getData[3];
+    //$generetion = $getData[4];
+    //$departmentCode = $getData[5];
 
     // If user already exists in the database with the same email
     $query = "SELECT studentId FROM student WHERE studentId = '$studentId'";
@@ -54,10 +43,11 @@ while (($getData = fgetcsv($csvFile, 10000, ",")) !== FALSE) {
     $check = mysqli_query($conn, $query);
 
     if ($check->num_rows > 0) {
-        mysqli_query($conn, "UPDATE student SET title = '$title' , name = '$name' , genderId = $genderId , generetionId = $generetionId , departmentId = $departmentId WHERE studentId = '" . $studentId . "'");
+        //mysqli_query($conn, "UPDATE student SET title = '$title' , name = '$name' , genderId = $genderId , generetionId = $generetionId , departmentId = $departmentId WHERE studentId = '" . $studentId . "'");
     } else {
 
-        mysqli_query($conn, "INSERT INTO student (studentId, departmentId, genderId, generetionId, title,name) VALUES ('$studentId',$departmentId,$genderId,$generetionId,'$title','$name')");
+        mysqli_query($conn, "INSERT INTO student (studentId, kuId, studentName, accessionNo, startYear,gender) 
+        VALUES ('$studentId','$startYear','$name',$accession,$startYear,'$gender')");
     }
 }
 
