@@ -31,7 +31,14 @@
 
 <body>
 
+    <?php
+    include_once '../function/semester.php';
+    include_once '../function/reportDepartment.php';
 
+
+    $semesterYear = getSemesterYearPresent();
+
+    ?>
 
 
     <?php include('./layout.php'); ?>
@@ -56,6 +63,7 @@
 
                                     <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold ">ช่วงเกรดนิสิตปีที่ 1</h6>
+                                        <?php $gradeRange1s = getGradeRangeSoryByGeneretionBySemesterYearAndStudentYear($semesterYear,1); ?>
                                     </div>
                                     <div class="card-body">
                                         <canvas id="pee1"></canvas>
@@ -67,6 +75,7 @@
 
                                     <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold ">ช่วงเกรดนิสิตปีที่ 2</h6>
+                                        <?php $gradeRange2s = getGradeRangeSoryByGeneretionBySemesterYearAndStudentYear($semesterYear,2); ?>
                                     </div>
                                     <div class="card-body">
                                         <canvas id="pee2"></canvas>
@@ -78,6 +87,7 @@
 
                                     <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold ">ช่วงเกรดนิสิตปีที่ 3</h6>
+                                        <?php $gradeRange3s = getGradeRangeSoryByGeneretionBySemesterYearAndStudentYear($semesterYear,3); ?>
                                     </div>
                                     <div class="card-body">
                                         <canvas id="pee3"></canvas>
@@ -90,6 +100,7 @@
 
                                     <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold">ช่วงเกรดนิสิตปีที่ 4</h6>
+                                        <?php $gradeRange4s = getGradeRangeSoryByGeneretionBySemesterYearAndStudentYear($semesterYear,4); ?>
                                     </div>
                                     <div class="card-body">
                                         <canvas id="pee4"></canvas>
@@ -136,14 +147,26 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                            $gpaMMAs = getGradeMMASortByGeneretionBySemesterYear($semesterYear);
+                                            
+                                            ?>
+
+                                            <?php
+                                            foreach($gpaMMAs as $gpaMMA){
+                                            ?>
 
                                             <tr style="font-weight: normal;">
-                                                <td style=" text-align: center;">รุ่น 63</td>
-                                                <td style=" text-align: center;">3.33</td>
-                                                <td style=" text-align: center;">2.15</td>
-                                                <td style=" text-align: center;">2.74</td>
+                                                <td style=" text-align: center;"><?php echo  $gpaMMA["kuId"] ?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaMMA["maxGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaMMA["minGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaMMA["avgGPAX"]?></td>
                                             </tr>
-                                            <tr style="font-weight: normal;">
+
+                                            <?php
+                                            }
+                                            ?>
+                                            <!-- <tr style="font-weight: normal;">
                                                 <td style=" text-align: center;">รุ่น 64</td>
                                                 <td style=" text-align: center;">3.26</td>
                                                 <td style=" text-align: center;">2.02</td>
@@ -160,7 +183,7 @@
                                                 <td style=" text-align: center;">3.35</td>
                                                 <td style=" text-align: center;">2.03</td>
                                                 <td style=" text-align: center;">2.69</td>
-                                            </tr>
+                                            </tr> -->
 
 
                                         </tbody>
