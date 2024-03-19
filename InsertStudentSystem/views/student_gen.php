@@ -254,13 +254,13 @@
                                                     <?php echo  $gpaMMA["kuId"] ?>
                                                 </td>
                                                 <td style=" text-align: center;">
-                                                    <?php echo  $gpaMMA["maxGPAX"]?>
+                                                    <?php echo  number_format($gpaMMA["maxGPAX"],2)?>
                                                 </td>
                                                 <td style=" text-align: center;">
-                                                    <?php echo  $gpaMMA["minGPAX"]?>
+                                                    <?php echo  number_format($gpaMMA["minGPAX"],2)?>
                                                 </td>
                                                 <td style=" text-align: center;">
-                                                    <?php echo  $gpaMMA["avgGPAX"]?>
+                                                    <?php echo  number_format($gpaMMA["avgGPAX"],2)?>
                                                 </td>
                                             </tr>
 
@@ -344,13 +344,13 @@
                                                     <?php echo  $gpaRoundMMA["accessionNo"] ?>
                                                 </td>
                                                 <td style=" text-align: center;">
-                                                    <?php echo  $gpaRoundMMA["maxGPAX"]?>
+                                                    <?php echo  number_format($gpaRoundMMA["maxGPAX"],2)?>
                                                 </td>
                                                 <td style=" text-align: center;">
-                                                    <?php echo  $gpaRoundMMA["minGPAX"]?>
+                                                    <?php echo  number_format($gpaRoundMMA["minGPAX"],2)?>
                                                 </td>
                                                 <td style=" text-align: center;">
-                                                    <?php echo  $gpaRoundMMA["avgGPAX"]?>
+                                                    <?php echo  number_format($gpaRoundMMA["avgGPAX"],2)?>
                                                 </td>
                                             </tr>
 
@@ -414,13 +414,13 @@
                                                     <?php echo  $gpaRoundMMA["accessionNo"] ?>
                                                 </td>
                                                 <td style=" text-align: center;">
-                                                    <?php echo  $gpaRoundMMA["maxGPAX"]?>
+                                                    <?php echo  number_format($gpaRoundMMA["maxGPAX"],2)?>
                                                 </td>
                                                 <td style=" text-align: center;">
-                                                    <?php echo  $gpaRoundMMA["minGPAX"]?>
+                                                    <?php echo  number_format($gpaRoundMMA["minGPAX"],2)?>
                                                 </td>
                                                 <td style=" text-align: center;">
-                                                    <?php echo  $gpaRoundMMA["avgGPAX"]?>
+                                                    <?php echo  number_format($gpaRoundMMA["avgGPAX"],2)?>
                                                 </td>
                                             </tr>
 
@@ -484,13 +484,13 @@
                                                     <?php echo  $gpaRoundMMA["accessionNo"] ?>
                                                 </td>
                                                 <td style=" text-align: center;">
-                                                    <?php echo  $gpaRoundMMA["maxGPAX"]?>
+                                                    <?php echo number_format($gpaRoundMMA["maxGPAX"],2) ?>
                                                 </td>
                                                 <td style=" text-align: center;">
-                                                    <?php echo  $gpaRoundMMA["minGPAX"]?>
+                                                    <?php echo  number_format($gpaRoundMMA["minGPAX"],2)?>
                                                 </td>
                                                 <td style=" text-align: center;">
-                                                    <?php echo  $gpaRoundMMA["avgGPAX"]?>
+                                                    <?php echo  number_format($gpaRoundMMA["avgGPAX"],2)?>
                                                 </td>
                                             </tr>
 
