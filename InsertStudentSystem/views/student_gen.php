@@ -195,160 +195,50 @@
                 </div>
             </div>
 
-
-
             <div class="col-sm-12 mx-auto">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">จำนวนนิสิตตาม Tcas ตามรุ่น (คน)</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">ผลการเรียนนิสิตในแต่ละรอบ</h6>
 
                     </div>
                     <div class="card-body ">
                         <div class="row" style="padding: 20px;">
                             <div class="col-sm-6">
 
-                                <canvas id="myChart2"></canvas>
+                                <div id="grade"></div>
                             </div>
-                            <div class="col-sm-6 float-right">
+                            <div class="col-sm-6 mx-auto">
                                 <div class="table-responsive">
                                     <table class="table table-striped" cellspacing="0" style="color: black;">
                                         <thead style=" ">
                                             <tr>
-                                                <th style=" text-align: center; ">รุ่น</th>
-                                                <th style="text-align: right; "><span>รอบที่ 1</span>
+                                                <th style=" text-align: center; "><span>รอบรับเข้า</span></th>
+                                                <th style="text-align: center; "><span>ค่าสูงสุด</span>
                                                 </th>
-                                                <th style="text-align: right;"><span>รอบที่ 2</span></th>
-                                                <th style="text-align: right;">รอบที่ 3</th>
-                                                <th style="text-align: right;">รอบที่ 4</th>
+                                                <th style="text-align: center;"><span>ค่าต่ำสุด</span></th>
+                                                <th style="text-align: center;"><span>ค่าเฉลี่ย</span></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td style=" text-align: center;">รุ่น 63</td>
-                                                <td style=" text-align: right;">15</td>
-                                                <td style=" text-align: right;">20</td>
-                                                <td style=" text-align: right;">13</td>
-                                                <td style=" text-align: right;">15</td>
-                                            </tr>
-                                            <tr>
-                                                <td style=" text-align: center;">รุ่น 64</td>
-                                                <td style=" text-align: right;">16</td>
-                                                <td style=" text-align: right;">22</td>
-                                                <td style=" text-align: right;">18</td>
-                                                <td style=" text-align: right;">7</td>
-                                            </tr>
-                                            <tr>
-                                                <td style=" text-align: center;">รุ่น 65</td>
-                                                <td style=" text-align: right;">14</td>
-                                                <td style=" text-align: right;">25</td>
-                                                <td style=" text-align: right;">16</td>
-                                                <td style=" text-align: right;">8</td>
-                                            </tr>
-                                            <tr>
-                                                <td style=" text-align: center;">รุ่น 66</td>
-                                                <td style=" text-align: right;">18</td>
-                                                <td style=" text-align: right;">21</td>
-                                                <td style=" text-align: right;">14</td>
-                                                <td style=" text-align: right;">10</td>
+                                            <?php
+                                            $gpaRoundMMAs = getGradeMMASortByRoundBySemesterYear($semesterYear);
+                                            
+                                            ?>
+
+                                            <?php
+                                            foreach($gpaRoundMMAs as $gpaRoundMMA){
+                                            ?>
+
+                                            <tr style="font-weight: normal;">
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["accessionNo"] ?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["maxGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["minGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["avgGPAX"]?></td>
                                             </tr>
 
-
-                                            <tr>
-                                                <th scope='row' style=" text-align: center; ">ทุกรุ่น</th>
-                                                <td style="font-weight: bold; text-align: right;">63 คน
-                                                </td>
-                                                <td style='font-weight: bold; text-align: right;'>88 คน
-                                                </td>
-                                                <td style='font-weight: bold; text-align: right;'>61 คน
-                                                </td>
-                                                <td style='font-weight: bold; text-align: right;'>40 คน
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-sm-12 mx-auto">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">อัตราการคงอยู่</h6>
-
-                    </div>
-                    <div class="card-body ">
-                        <div class="row" style="padding: 20px;">
-                            <div class="col-sm-6">
-
-                                <canvas id="percent"></canvas>
-                            </div>
-                            <div class="col-sm-6 float-right">
-                                <div class="table-responsive">
-                                    <table class="table table-striped" cellspacing="0" style="color: black;">
-                                        <thead style=" ">
-                                            <tr>
-                                                <th style=" text-align: center; ">รุ่นการศึกษา</th>
-                                                <th style="text-align: center; "><span>จำนวนรับเข้า</span>
-                                                </th>
-                                                <th style="text-align: center;"><span>จำนวนคงอยู่</span></th>
-                                                <th style="text-align: center;">ร้อยละ</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                            <tr>
-                                                <th style=" text-align: center;  ">รุ่น 63</th>
-                                                <td style=" text-align: center;">
-                                                    63 คน
-                                                </td>
-                                                <td style=" text-align: center;">
-                                                    63 คน
-                                                </td>
-                                                <td style=" text-align: center;">100</td>
-
-                                            </tr>
-
-                                            <tr>
-                                                <th style=" text-align: center;  ">รุ่น 64</th>
-                                                <td style=" text-align: center;">
-                                                    63 คน
-                                                </td>
-                                                <td style=" text-align: center;">
-                                                    50 คน
-                                                </td>
-                                                <td style=" text-align: center;">79.36</td>
-
-                                            </tr>
-                                            <tr>
-                                                <th style=" text-align: center;  ">รุ่น 65</th>
-                                                <td style=" text-align: center;">
-                                                    63 คน
-                                                </td>
-                                                <td style=" text-align: center;">
-                                                    60 คน
-                                                </td>
-                                                <td style=" text-align: center;">95.23</td>
-
-                                            </tr>
-                                            <tr>
-                                                <th style=" text-align: center;  ">รุ่น 66</th>
-                                                <td style=" text-align: center;">
-                                                    63 คน
-                                                </td>
-                                                <td style=" text-align: center;">
-                                                    55 คน
-                                                </td>
-                                                <td style=" text-align: center;">87.30</td>
-
-                                            </tr>
-
-
+                                            <?php
+                                            }
+                                            ?>
 
 
                                         </tbody>
@@ -363,60 +253,47 @@
             <div class="col-sm-12 mx-auto">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">อัตราพ้นสภาพ</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">ผลการเรียนนิสิตรุ่น 60 ในแต่ละรอบ</h6>
 
                     </div>
                     <div class="card-body ">
                         <div class="row" style="padding: 20px;">
                             <div class="col-sm-6">
 
-                                <canvas id="percent2"></canvas>
+                                <div id="grade"></div>
                             </div>
-                            <div class="col-sm-6 float-right">
+                            <div class="col-sm-6 mx-auto">
                                 <div class="table-responsive">
                                     <table class="table table-striped" cellspacing="0" style="color: black;">
                                         <thead style=" ">
                                             <tr>
-                                                <th style=" text-align: center; ">รุ่นการศึกษา</th>
-                                                <th style="text-align: center; "><span>จำนวนรับเข้า</span>
+                                                <th style=" text-align: center; "><span>รอบรับเข้า</span></th>
+                                                <th style="text-align: center; "><span>ค่าสูงสุด</span>
                                                 </th>
-                                                <th style="text-align: center;"><span>จำนวนพ้นสภาพ</span></th>
-                                                <th style="text-align: center;">ร้อยละ</th>
-
+                                                <th style="text-align: center;"><span>ค่าต่ำสุด</span></th>
+                                                <th style="text-align: center;"><span>ค่าเฉลี่ย</span></th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                            $gpaRoundMMAs = getGradeMMASortByRoundBySemesterYearAndGeneretion($semesterYear,60);
+                                            
+                                            ?>
 
-                                            <tr>
-                                                <th style=" text-align: center;  ">รุ่น 63</th>
-                                                <td style=" text-align: center;">63 คน </td>
-                                                <td style=" text-align: center;">0 คน</td>
-                                                <td style=" text-align: center;">0</td>
+                                            <?php
+                                            foreach($gpaRoundMMAs as $gpaRoundMMA){
+                                            ?>
 
-                                            </tr>
-                                            <tr>
-                                                <th style=" text-align: center;  ">รุ่น 64</th>
-                                                <td style=" text-align: center;">63 คน </td>
-                                                <td style=" text-align: center;">13 คน</td>
-                                                <td style=" text-align: center;">20.63</td>
-
-                                            </tr>
-                                            <tr>
-                                                <th style=" text-align: center;  ">รุ่น 65</th>
-                                                <td style=" text-align: center;">63 คน </td>
-                                                <td style=" text-align: center;">3 คน</td>
-                                                <td style=" text-align: center;">4.76</td>
-
-                                            </tr>
-                                            <tr>
-                                                <th style=" text-align: center;  ">รุ่น 66</th>
-                                                <td style=" text-align: center;">63 คน </td>
-                                                <td style=" text-align: center;">8 คน</td>
-                                                <td style=" text-align: center;">12.69</td>
-
+                                            <tr style="font-weight: normal;">
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["accessionNo"] ?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["maxGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["minGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["avgGPAX"]?></td>
                                             </tr>
 
-
+                                            <?php
+                                            }
+                                            ?>
 
 
                                         </tbody>
@@ -427,6 +304,232 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-sm-12 mx-auto">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">ผลการเรียนนิสิตรุ่น 61 ในแต่ละรอบ</h6>
+
+                    </div>
+                    <div class="card-body ">
+                        <div class="row" style="padding: 20px;">
+                            <div class="col-sm-6">
+
+                                <div id="grade"></div>
+                            </div>
+                            <div class="col-sm-6 mx-auto">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" cellspacing="0" style="color: black;">
+                                        <thead style=" ">
+                                            <tr>
+                                                <th style=" text-align: center; "><span>รอบรับเข้า</span></th>
+                                                <th style="text-align: center; "><span>ค่าสูงสุด</span>
+                                                </th>
+                                                <th style="text-align: center;"><span>ค่าต่ำสุด</span></th>
+                                                <th style="text-align: center;"><span>ค่าเฉลี่ย</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $gpaRoundMMAs = getGradeMMASortByRoundBySemesterYearAndGeneretion($semesterYear,61);
+                                            
+                                            ?>
+
+                                            <?php
+                                            foreach($gpaRoundMMAs as $gpaRoundMMA){
+                                            ?>
+
+                                            <tr style="font-weight: normal;">
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["accessionNo"] ?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["maxGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["minGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["avgGPAX"]?></td>
+                                            </tr>
+
+                                            <?php
+                                            }
+                                            ?>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 mx-auto">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">ผลการเรียนนิสิตรุ่น 62 ในแต่ละรอบ</h6>
+
+                    </div>
+                    <div class="card-body ">
+                        <div class="row" style="padding: 20px;">
+                            <div class="col-sm-6">
+
+                                <div id="grade"></div>
+                            </div>
+                            <div class="col-sm-6 mx-auto">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" cellspacing="0" style="color: black;">
+                                        <thead style=" ">
+                                            <tr>
+                                                <th style=" text-align: center; "><span>รอบรับเข้า</span></th>
+                                                <th style="text-align: center; "><span>ค่าสูงสุด</span>
+                                                </th>
+                                                <th style="text-align: center;"><span>ค่าต่ำสุด</span></th>
+                                                <th style="text-align: center;"><span>ค่าเฉลี่ย</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $gpaRoundMMAs = getGradeMMASortByRoundBySemesterYearAndGeneretion($semesterYear,62);
+                                            
+                                            ?>
+
+                                            <?php
+                                            foreach($gpaRoundMMAs as $gpaRoundMMA){
+                                            ?>
+
+                                            <tr style="font-weight: normal;">
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["accessionNo"] ?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["maxGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["minGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["avgGPAX"]?></td>
+                                            </tr>
+
+                                            <?php
+                                            }
+                                            ?>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 mx-auto">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">ผลการเรียนนิสิตรุ่น 63 ในแต่ละรอบ</h6>
+
+                    </div>
+                    <div class="card-body ">
+                        <div class="row" style="padding: 20px;">
+                            <div class="col-sm-6">
+
+                                <div id="grade"></div>
+                            </div>
+                            <div class="col-sm-6 mx-auto">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" cellspacing="0" style="color: black;">
+                                        <thead style=" ">
+                                            <tr>
+                                                <th style=" text-align: center; "><span>รอบรับเข้า</span></th>
+                                                <th style="text-align: center; "><span>ค่าสูงสุด</span>
+                                                </th>
+                                                <th style="text-align: center;"><span>ค่าต่ำสุด</span></th>
+                                                <th style="text-align: center;"><span>ค่าเฉลี่ย</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $gpaRoundMMAs = getGradeMMASortByRoundBySemesterYearAndGeneretion($semesterYear,63);
+                                            
+                                            ?>
+
+                                            <?php
+                                            foreach($gpaRoundMMAs as $gpaRoundMMA){
+                                            ?>
+
+                                            <tr style="font-weight: normal;">
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["accessionNo"] ?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["maxGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["minGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["avgGPAX"]?></td>
+                                            </tr>
+
+                                            <?php
+                                            }
+                                            ?>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 mx-auto">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">ผลการเรียนนิสิตรุ่น 64 ในแต่ละรอบ</h6>
+
+                    </div>
+                    <div class="card-body ">
+                        <div class="row" style="padding: 20px;">
+                            <div class="col-sm-6">
+
+                                <div id="grade"></div>
+                            </div>
+                            <div class="col-sm-6 mx-auto">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" cellspacing="0" style="color: black;">
+                                        <thead style=" ">
+                                            <tr>
+                                                <th style=" text-align: center; "><span>รอบรับเข้า</span></th>
+                                                <th style="text-align: center; "><span>ค่าสูงสุด</span>
+                                                </th>
+                                                <th style="text-align: center;"><span>ค่าต่ำสุด</span></th>
+                                                <th style="text-align: center;"><span>ค่าเฉลี่ย</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $gpaRoundMMAs = getGradeMMASortByRoundBySemesterYearAndGeneretion($semesterYear,64);
+                                            
+                                            ?>
+
+                                            <?php
+                                            foreach($gpaRoundMMAs as $gpaRoundMMA){
+                                            ?>
+
+                                            <tr style="font-weight: normal;">
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["accessionNo"] ?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["maxGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["minGPAX"]?></td>
+                                                <td style=" text-align: center;"><?php echo  $gpaRoundMMA["avgGPAX"]?></td>
+                                            </tr>
+
+                                            <?php
+                                            }
+                                            ?>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            
+
+            
 
         </div>
 

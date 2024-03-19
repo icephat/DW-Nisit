@@ -53,6 +53,58 @@ function getGradeMMASortByGeneretionBySemesterYear($semesterYear){
 
 }
 
+function getGradeMMASortByRoundBySemesterYear($semesterYear){
+
+    require("connection_connect.php");
+
+    $gradeMMAs = [];
+
+    $sql = "SELECT accessionNo,MAX(gpaxAvg) AS maxGPAX,MIN(gpaxAvg) AS minGPAX,ROUND(AVG(gpaxAvg),2) AS avgGPAX
+    FROM student NATURAL JOIN fact1_grade NATURAL JOIN semester
+    WHERE semesterYear <= $semesterYear
+    GROUP BY accessionNo";
+    //echo print_r($conn);
+    
+    $result = $conn->query($sql);
+    
+
+    while ($my_row = $result->fetch_assoc()) {
+
+        $gradeMMAs[] = $my_row;
+    }
+
+    require("connection_close.php");
+
+    return $gradeMMAs;
+
+}
+
+function getGradeMMASortByRoundBySemesterYearAndGeneretion($semesterYear,$startYear){
+
+    require("connection_connect.php");
+
+    $gradeMMAs = [];
+
+    $sql = "SELECT accessionNo,MAX(gpaxAvg) AS maxGPAX,MIN(gpaxAvg) AS minGPAX,ROUND(AVG(gpaxAvg),2) AS avgGPAX
+    FROM student NATURAL JOIN fact1_grade NATURAL JOIN semester
+    WHERE semesterYear <= $semesterYear AND startYear = $startYear
+    GROUP BY accessionNo";
+    //echo print_r($conn);
+    
+    $result = $conn->query($sql);
+    
+
+    while ($my_row = $result->fetch_assoc()) {
+
+        $gradeMMAs[] = $my_row;
+    }
+
+    require("connection_close.php");
+
+    return $gradeMMAs;
+
+}
+
 
 
 ?>
