@@ -108,10 +108,18 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $subjectADWFs = getCountSubjectGradeAtoZAndWAndFBySemesterYear($semesterYear);
+                                                $subjectADWFs = getCountSubjectGradeAtoZAndWAndFBySemesterYear($semesterYear);
+                                                $labelADWFs = [];
+                                                $subjectPass = [];
+                                                $subjectNotPass = [];
+                                                $subjectDrop = [];
                                         ?>
                                         <?php
                                         foreach ($subjectADWFs as $subjectADWF) {
+                                                $labelADWFs[]=$subjectADWF["subjectName"];
+                                                $subjectPass[]=$subjectADWF["subjectPass"];
+                                                $subjectNotPass[]=$subjectADWF["subjectNotPass"];
+                                                $subjectDrop[]=$subjectADWF["subjectDrop"];
                                             ?>
 
                                             <tr>
@@ -181,10 +189,20 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $subjectAtoDs = getCountSubjectGradeAtoDBySemesterYear($semesterYear);
+                                            $subjectAtoDs = getCountSubjectGradeAtoDBySemesterYear($semesterYear);
+                                            $labelAtoD = [];
+                                            $subjectA = [];
+                                            $subjectB = [];
+                                            $subjectC = [];
+                                            $subjectD = [];
                                         ?>
                                         <?php
                                         foreach ($subjectAtoDs as $subjectAtoD) {
+                                                $labelAtoD[]=$subjectAtoD["subjectName"];
+                                                $subjectA[]=$subjectAtoD["A"];
+                                                $subjectB[]=$subjectAtoD["B"];
+                                                $subjectC[]=$subjectAtoD["C"];
+                                                $subjectD[]=$subjectAtoD["D"];
                                             ?>
                                             <tr>
                                                 <td>
@@ -453,17 +471,23 @@
     </div>
 
     <script>
+       
+        var labelADWFs = <?php echo json_encode($labelADWFs); ?>;
+
+        var subjectPass = <?php echo json_encode($subjectPass); ?>;
+        var subjectNotPass = <?php echo json_encode($subjectNotPass); ?>;
+        var subjectDrop = <?php echo json_encode($subjectDrop); ?>;
 
         var ctx = document.getElementById("myChart");
         ctx.height = 150;
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Electronics Fundamentals", "Discrete Mathematics", "Data Structures and Algorithms I"],
+                labels: labelADWFs,
                 datasets: [
                     {
                         label: "เกรด A-D",
-                        data: [30, 50, 55],
+                        data: subjectPass,
                         backgroundColor: '#bfd575',
                         borderColor: [
                             'rgba(150,186,169, 1)', //1
@@ -477,7 +501,7 @@
                     },
                     {
                         label: "เกรด F",
-                        data: [20, 3, 3],
+                        data: subjectNotPass,
                         backgroundColor: '#a4ebf3',
                         borderColor: [
                             'rgba(150,186,169, 1)', //1
@@ -492,7 +516,7 @@
                     ,
                     {
                         label: "เกรด W",
-                        data: [13, 10, 5],
+                        data: subjectDrop,
                         backgroundColor: '#abbdee',
                         borderColor: [
                             'rgba(150,186,169, 1)', //1
@@ -520,17 +544,23 @@
     </script>
 
     <script>
+        
+        var labelAtoD = <?php echo json_encode($labelAtoD); ?>;
 
+        var subjectA = <?php echo json_encode($subjectA); ?>;
+        var subjectB = <?php echo json_encode($subjectB); ?>;
+        var subjectC = <?php echo json_encode($subjectC); ?>;
+        var subjectD = <?php echo json_encode($subjectD); ?>;
         var ctx = document.getElementById("myChart2");
         ctx.height = 150;
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Electronics Fundamentals", "Discrete Mathematics", "Data Structures and Algorithms I"],
+                labels: labelAtoD,
                 datasets: [
                     {
                         label: "เกรด A",
-                        data: [10, 19, 19],
+                        data: subjectA,
                         backgroundColor: '#bfd575',
                         borderColor: [
                             'rgba(150,186,169, 1)', //1
@@ -544,7 +574,7 @@
                     },
                     {
                         label: "เกรด B,B+",
-                        data: [9, 20, 20],
+                        data: subjectB,
                         backgroundColor: '#a4ebf3',
                         borderColor: [
                             'rgba(150,186,169, 1)', //1
@@ -559,7 +589,7 @@
                     ,
                     {
                         label: "เกรด C,C+",
-                        data: [7, 8, 8],
+                        data: subjectC,
                         backgroundColor: '#abbdee',
                         borderColor: [
                             'rgba(150,186,169, 1)', //1
@@ -573,7 +603,7 @@
                     },
                     {
                         label: "เกรด D,D+",
-                        data: [4, 3, 8],
+                        data: subjectD,
                         backgroundColor: '#ffe4b5',
                         borderColor: [
                             'rgba(150,186,169, 1)', //1

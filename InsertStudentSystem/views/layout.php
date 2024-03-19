@@ -102,12 +102,6 @@
                 </li>
 
                 <li>
-                    <a class="menu-icon" href="./student_couse.php" aria-expanded="false">
-                        <i class="fa fa-bar-chart"></i>&nbsp;รายงานตามหลักสูตร</span>
-                    </a>
-                </li>
-
-                <li>
                     <a class="menu-icon" href="./student_gen.php" aria-expanded="false">
                         <i class="fa fa-bar-chart"></i>&nbsp;รายงานตามรุ่น</span>
                     </a>
