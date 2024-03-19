@@ -32,9 +32,15 @@
 <body>
 
 
+    <?php
+    include_once '../function/semester.php';
+    include_once '../function/reportSubject.php';
 
 
-    <?php include('./layout.php'); ?>
+    $semesterYear = getSemesterYearPresent();
+    ?>
+
+    <?php include ('./layout.php'); ?>
     <!--**********************************
             Content body start
         ***********************************-->
@@ -42,7 +48,7 @@
         <br>
         <form>
             <div class="row">
-                <div class="col-sm-4 mx-auto">
+                <!-- <div class="col-sm-4 mx-auto">
 
                     <label>รายวิชา</label>
                     <select class="form-control">
@@ -51,7 +57,7 @@
                         <option value="">หลักสูตร 65</option>
                     </select>
 
-                </div>
+                </div> -->
                 <div class="col-sm-4 mx-auto">
 
                     <label>ปีการศึกษา</label>
@@ -101,14 +107,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                        $subjectADWFs = getCountSubjectGradeAtoZAndWAndFBySemesterYear($semesterYear);
+                                        ?>
+                                        <?php
+                                        foreach ($subjectADWFs as $subjectADWF) {
+                                            ?>
 
-                                        <tr>
-                                            <td>Electronics Fundamentals</td>
-                                            <td style=" text-align: center;">30 คน</td>
-                                            <td style=" text-align: center;">20 คน</td>
-                                            <td style=" text-align: center;">13 คน</td>
-                                        </tr>
-                                        <tr>
+                                            <tr>
+                                                <td>
+                                                    <?php echo $subjectADWF["subjectName"] ?>
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectADWF["subjectPass"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectADWF["subjectNotPass"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectADWF["subjectDrop"] ?> คน
+                                                </td>
+                                            </tr>
+                                            <?php
+                                        }
+                                        ?>
+                                        <!-- <tr>
                                             <td>Discrete Mathematics</td>
                                             <td style=" text-align: center;">50 คน</td>
                                             <td style=" text-align: center;">3 คน</td>
@@ -119,7 +142,7 @@
                                             <td style=" text-align: center;">55 คน</td>
                                             <td style=" text-align: center;">3 คน</td>
                                             <td style=" text-align: center;">5 คน</td>
-                                        </tr>
+                                        </tr> -->
 
 
                                     </tbody>
@@ -157,15 +180,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
+                                        <?php
+                                        $subjectAtoDs = getCountSubjectGradeAtoDBySemesterYear($semesterYear);
+                                        ?>
+                                        <?php
+                                        foreach($subjectAtoDs as $subjectAtoD){
+                                        ?>
                                         <tr>
-                                            <td>Electronics Fundamentals</td>
-                                            <td style=" text-align: center;">10 คน</td>
-                                            <td style=" text-align: center;">9 คน</td>
-                                            <td style=" text-align: center;">7 คน</td>
-                                            <td style=" text-align: center;">4 คน</td>
+                                            <td><?php echo $subjectAtoD["subjectName"] ?></td>
+                                            <td style=" text-align: center;"><?php echo $subjectAtoD["A"] ?> คน</td>
+                                            <td style=" text-align: center;"><?php echo $subjectAtoD["B"] ?> คน</td>
+                                            <td style=" text-align: center;"><?php echo $subjectAtoD["C"] ?> คน</td>
+                                            <td style=" text-align: center;"><?php echo $subjectAtoD["D"] ?> คน</td>
                                         </tr>
-                                        <tr>
+                                        <?php
+                                        }
+                                        ?>
+                                        <!-- <tr>
                                             <td>Discrete Mathematics</td>
                                             <td style=" text-align: center;">19 คน</td>
                                             <td style=" text-align: center;">20 คน</td>
@@ -178,7 +209,7 @@
                                             <td style=" text-align: center;">20 คน</td>
                                             <td style=" text-align: center;">8 คน</td>
                                             <td style=" text-align: center;">8 คน</td>
-                                        </tr>
+                                        </tr> -->
 
 
                                     </tbody>
@@ -203,7 +234,7 @@
                                 <table class="table table-striped" cellspacing="0" style="color: black;">
                                     <thead style=" ">
                                         <tr>
-                                            <th colspan="2" >ชื่อรายวิชา</th>
+                                            <th colspan="2">ชื่อรายวิชา</th>
                                             <th colspan="3" style=" text-align: center;">
                                                 ปีการศึกษา</th>
                                             <!--<th rowspan="1" style=" text-align: center;">คงเหลือ(คน)
@@ -243,7 +274,7 @@
                                             <td style=" text-align: center;">63 คน </td>
                                             <td style=" text-align: center;">63 คน</td>
                                             <!--<td style=" text-align: center;">63 คน</td>-->
-                                            
+
                                         </tr>
 
                                         <!--<tr>
@@ -279,7 +310,7 @@
                                 <table class="table table-striped" cellspacing="0" style="color: black;">
                                     <thead style=" ">
                                         <tr>
-                                            <th colspan="2" >ชื่อรายวิชา</th>
+                                            <th colspan="2">ชื่อรายวิชา</th>
                                             <th colspan="3" style=" text-align: center;">
                                                 ปีการศึกษา</th>
                                             <!--<th rowspan="1" style=" text-align: center;">คงเหลือ(คน)
@@ -319,7 +350,7 @@
                                             <td style=" text-align: center;">10 คน </td>
                                             <td style=" text-align: center;">5 คน</td>
                                             <!--<td style=" text-align: center;">0 คน</td>-->
-                                            
+
                                         </tr>
 
                                         <!--<tr>
@@ -355,7 +386,7 @@
                                 <table class="table table-striped" cellspacing="0" style="color: black;">
                                     <thead style=" ">
                                         <tr>
-                                            <th colspan="2" >ชื่อรายวิชา</th>
+                                            <th colspan="2">ชื่อรายวิชา</th>
                                             <th colspan="3" style=" text-align: center;">
                                                 ปีการศึกษา</th>
                                             <!--<th rowspan="1" style=" text-align: center;">คงเหลือ(คน)
@@ -395,7 +426,7 @@
                                             <td style=" text-align: center;">3 คน </td>
                                             <td style=" text-align: center;">1 คน</td>
                                             <!--<td style=" text-align: center;">0 คน</td>-->
-                                            
+
                                         </tr>
 
                                         <!--<tr>
