@@ -184,16 +184,26 @@
                                         $subjectAtoDs = getCountSubjectGradeAtoDBySemesterYear($semesterYear);
                                         ?>
                                         <?php
-                                        foreach($subjectAtoDs as $subjectAtoD){
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $subjectAtoD["subjectName"] ?></td>
-                                            <td style=" text-align: center;"><?php echo $subjectAtoD["A"] ?> คน</td>
-                                            <td style=" text-align: center;"><?php echo $subjectAtoD["B"] ?> คน</td>
-                                            <td style=" text-align: center;"><?php echo $subjectAtoD["C"] ?> คน</td>
-                                            <td style=" text-align: center;"><?php echo $subjectAtoD["D"] ?> คน</td>
-                                        </tr>
-                                        <?php
+                                        foreach ($subjectAtoDs as $subjectAtoD) {
+                                            ?>
+                                            <tr>
+                                                <td>
+                                                    <?php echo $subjectAtoD["subjectName"] ?>
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectAtoD["A"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectAtoD["B"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectAtoD["C"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectAtoD["D"] ?> คน
+                                                </td>
+                                            </tr>
+                                            <?php
                                         }
                                         ?>
                                         <!-- <tr>
@@ -244,47 +254,39 @@
                                     <tbody>
                                         <tr>
                                             <td></td>
-                                            <td style=" text-align: center;">2563</td>
-                                            <td style=" text-align: center;">2564</td>
+                                            <?php
+
+                                            for ($i = $semesterYear - 3; $i <= $semesterYear; $i++) {
+                                                ?>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $i ?>
+                                                </td>
+                                                <?php
+                                            }
+                                            ?>
+                                            <!-- <td style=" text-align: center;">2564</td>
                                             <td style=" text-align: center;">2565 </td>
-                                            <td style=" text-align: center;">2566</td>
+                                            <td style=" text-align: center;">2566</td> -->
                                             <!--<td style=" text-align: center;"></td>-->
                                         </tr>
-                                        <tr>
-                                            <td>Electronics Fundamentals</td>
-                                            <td style=" text-align: center;">63 คน</td>
-                                            <td style=" text-align: center;">63 คน</td>
-                                            <td style=" text-align: center;">30 คน </td>
-                                            <td style=" text-align: center;">63 คน</td>
-                                            <!--<td style=" text-align: center;">63 คน</td>-->
-                                        </tr>
+                                        <?php
 
-                                        <tr>
-                                            <td>Discrete Mathematics</td>
-                                            <td style=" text-align: center;">63 คน</td>
-                                            <td style=" text-align: center;">63 คน</td>
-                                            <td style=" text-align: center;">63 คน </td>
-                                            <td style=" text-align: center;">63 คน</td>
-                                            <!--<td style=" text-align: center;">63 คน</td>-->
-                                        </tr>
-                                        <tr>
-                                            <td>Data Structures and Algorithms I</td>
-                                            <td style=" text-align: center;">63 คน</td>
-                                            <td style=" text-align: center;">63 คน</td>
-                                            <td style=" text-align: center;">63 คน </td>
-                                            <td style=" text-align: center;">63 คน</td>
-                                            <!--<td style=" text-align: center;">63 คน</td>-->
+                                        $subjectRegisInYears = getCountRigisSubjectBySemesterYear($semesterYear);
 
-                                        </tr>
+                                        foreach ($subjectRegisInYears as $subjectRegisInYear) {
+                                            ?>
 
-                                        <!--<tr>
-                                            <th scope='row' >ทุกรุ่น</th>
-                                            <td style="font-weight: bold; text-align: center;">63 คน</td>
-                                            <td style="font-weight: bold; text-align: center;">63 คน</td>
-                                            <td style='font-weight: bold; text-align: center;'>63 คน</td>
-                                            <td style='font-weight: bold; text-align: center;'>63 คน</td>
-                                            <td style=" font-weight: bold; text-align: center;"></td>
-                                        </tr>-->
+                                            <tr>
+                                                <td><?php echo $subjectRegisInYear["subjectName"] ?></td>
+                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["one"] ?> คน</td>
+                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["two"] ?> คน</td>
+                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["three"] ?> คน </td>
+                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["four"] ?> คน</td>
+                                                <!--<td style=" text-align: center;">0 คน</td>-->
+                                            </tr>
+                                            <?php
+                                        }
+                                        ?>
 
 
 
@@ -320,47 +322,36 @@
                                     <tbody>
                                         <tr>
                                             <td></td>
-                                            <td style=" text-align: center;">2563</td>
-                                            <td style=" text-align: center;">2564</td>
-                                            <td style=" text-align: center;">2565 </td>
-                                            <td style=" text-align: center;">2566</td>
+                                            <?php
+
+                                            for ($i = $semesterYear - 3; $i <= $semesterYear; $i++) {
+                                                ?>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $i ?>
+                                                </td>
+                                                <?php
+                                            }
+                                            ?>
                                             <!--<td style=" text-align: center;"></td>-->
                                         </tr>
-                                        <tr>
-                                            <td>Electronics Fundamentals</td>
-                                            <td style=" text-align: center;">16 คน</td>
-                                            <td style=" text-align: center;">5 คน</td>
-                                            <td style=" text-align: center;">5 คน </td>
-                                            <td style=" text-align: center;">5 คน</td>
-                                            <!--<td style=" text-align: center;">0 คน</td>-->
-                                        </tr>
+                                        <?php
 
-                                        <tr>
-                                            <td>Discrete Mathematics</td>
-                                            <td style=" text-align: center;">25 คน</td>
-                                            <td style=" text-align: center;">15 คน</td>
-                                            <td style=" text-align: center;">10 คน </td>
-                                            <td style=" text-align: center;">10 คน</td>
-                                            <!--<td style=" text-align: center;">0 คน</td>-->
-                                        </tr>
-                                        <tr>
-                                            <td>Data Structures and Algorithms I</td>
-                                            <td style=" text-align: center;">24 คน</td>
-                                            <td style=" text-align: center;">16 คน</td>
-                                            <td style=" text-align: center;">10 คน </td>
-                                            <td style=" text-align: center;">5 คน</td>
-                                            <!--<td style=" text-align: center;">0 คน</td>-->
+                                        $subjectRegisInYears = getCountRigisPassSubjectBySemesterYear($semesterYear);
 
-                                        </tr>
+                                        foreach ($subjectRegisInYears as $subjectRegisInYear) {
+                                            ?>
 
-                                        <!--<tr>
-                                            <th scope='row' >ทุกรุ่น</th>
-                                            <td style="font-weight: bold; text-align: center;">63 คน</td>
-                                            <td style="font-weight: bold; text-align: center;">63 คน</td>
-                                            <td style='font-weight: bold; text-align: center;'>63 คน</td>
-                                            <td style='font-weight: bold; text-align: center;'>63 คน</td>
-                                            <td style=" font-weight: bold; text-align: center;"></td>
-                                        </tr>-->
+                                            <tr>
+                                            <td><?php echo $subjectRegisInYear["subjectName"] ?></td>
+                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["one"] ?> คน</td>
+                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["two"] ?> คน</td>
+                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["three"] ?> คน </td>
+                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["four"] ?> คน</td>
+                                                <!--<td style=" text-align: center;">0 คน</td>-->
+                                            </tr>
+                                            <?php
+                                        }
+                                        ?>
 
 
 
@@ -396,38 +387,37 @@
                                     <tbody>
                                         <tr>
                                             <td></td>
-                                            <td style=" text-align: center;">2563</td>
-                                            <td style=" text-align: center;">2564</td>
-                                            <td style=" text-align: center;">2565 </td>
-                                            <td style=" text-align: center;">2566</td>
+                                            <?php
+
+                                            for ($i = $semesterYear - 3; $i <= $semesterYear; $i++) {
+                                                ?>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $i ?>
+                                                </td>
+                                                <?php
+                                            }
+                                            ?>
                                             <!--<td style=" text-align: center;"></td>-->
                                         </tr>
-                                        <tr>
-                                            <td>Electronics Fundamentals</td>
-                                            <td style=" text-align: center;">5 คน</td>
-                                            <td style=" text-align: center;">10 คน</td>
-                                            <td style=" text-align: center;">15 คน </td>
-                                            <td style=" text-align: center;">3 คน</td>
-                                            <!--<td style=" text-align: center;">0 คน</td>-->
-                                        </tr>
+                                        <?php
 
-                                        <tr>
-                                            <td>Discrete Mathematics</td>
-                                            <td style=" text-align: center;">2 คน</td>
-                                            <td style=" text-align: center;">3 คน</td>
-                                            <td style=" text-align: center;">5 คน </td>
-                                            <td style=" text-align: center;">3 คน</td>
-                                            <!--<td style=" text-align: center;">0 คน</td>-->
-                                        </tr>
-                                        <tr>
-                                            <td>Data Structures and Algorithms I</td>
-                                            <td style=" text-align: center;">2 คน</td>
-                                            <td style=" text-align: center;">2 คน</td>
-                                            <td style=" text-align: center;">3 คน </td>
-                                            <td style=" text-align: center;">1 คน</td>
-                                            <!--<td style=" text-align: center;">0 คน</td>-->
+                                        $subjectRegisInYears = getCountRigisNotPassSubjectBySemesterYear($semesterYear);
 
-                                        </tr>
+                                        foreach ($subjectRegisInYears as $subjectRegisInYear) {
+                                            ?>
+
+                                            <tr>
+                                            <td><?php echo $subjectRegisInYear["subjectName"] ?></td>
+                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["one"] ?> คน</td>
+                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["two"] ?> คน</td>
+                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["three"] ?> คน </td>
+                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["four"] ?> คน</td>
+                                                <!--<td style=" text-align: center;">0 คน</td>-->
+                                            </tr>
+                                            <?php
+                                        }
+                                        ?>
+
 
                                         <!--<tr>
                                             <th scope='row' >ทุกรุ่น</th>
