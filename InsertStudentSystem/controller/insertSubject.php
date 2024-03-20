@@ -71,7 +71,7 @@ while (($getData = fgetcsv($csvFile, 10000, ",")) !== FALSE) {
     $check = mysqli_query($conn, $query);
 
     if ($check->num_rows > 0) {
-        //mysqli_query($conn, "UPDATE student SET title = '$title' , name = '$name' , genderId = $genderId , generetionId = $generetionId , departmentId = $departmentId WHERE studentId = '" . $studentId . "'");
+        mysqli_query($conn, "UPDATE subject SET subjectName = '$subjectName' WHERE kuSubjectId = '" . $kuSubjectId . "'");
     } else {
 
         mysqli_query($conn, "INSERT INTO subject (subjectGroupId, kuSubjectId, subjectName, totalCredits, lacCredits,labCredits,lacHrs,labHrs,planYear,semester) 
