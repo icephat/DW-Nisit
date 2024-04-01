@@ -37,7 +37,7 @@
     include_once '../function/reportSubject.php';
 
 
-    $semesterYear = getSemesterYearPresent();
+    $semesterYear = $_POST["semesterYear"];
     ?>
 
     <?php include ('./layout.php'); ?>
@@ -62,13 +62,13 @@
 
                     <label>ปีการศึกษา</label>
                     <select class="form-control" name = "semesterYear">
-                        <option value="2566">2566</option>
-                        <option value="2565">2565</option>
-                        <option value="2564">2564</option>
-                        <option value="2563">2563</option>
-                        <option value="2562">2562</option>
-                        <option value="2561">2561</option>
-                        <option value="2560">2560</option>
+                        <option value="2566" <?php if($semesterYear == 2566) echo " selected"?>>2566</option>
+                        <option value="2565" <?php if($semesterYear == 2565) echo " selected"?>>2565</option>
+                        <option value="2564" <?php if($semesterYear == 2564) echo " selected"?>>2564</option>
+                        <option value="2563" <?php if($semesterYear == 2563) echo " selected"?>>2563</option>
+                        <option value="2562" <?php if($semesterYear == 2562) echo " selected"?>>2562</option>
+                        <option value="2561" <?php if($semesterYear == 2561) echo " selected"?>>2561</option>
+                        <option value="2560" <?php if($semesterYear == 2560) echo " selected"?>>2560</option>
                     </select>
 
                 </div>
@@ -110,18 +110,18 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                                $subjectADWFs = getCountSubjectGradeAtoZAndWAndFBySemesterYear($semesterYear);
-                                                $labelADWFs = [];
-                                                $subjectPass = [];
-                                                $subjectNotPass = [];
-                                                $subjectDrop = [];
+                                        $subjectADWFs = getCountSubjectGradeAtoZAndWAndFBySemesterYear($semesterYear);
+                                        $labelADWFs = [];
+                                        $subjectPass = [];
+                                        $subjectNotPass = [];
+                                        $subjectDrop = [];
                                         ?>
                                         <?php
                                         foreach ($subjectADWFs as $subjectADWF) {
-                                                $labelADWFs[]=$subjectADWF["subjectName"];
-                                                $subjectPass[]=$subjectADWF["subjectPass"];
-                                                $subjectNotPass[]=$subjectADWF["subjectNotPass"];
-                                                $subjectDrop[]=$subjectADWF["subjectDrop"];
+                                            $labelADWFs[] = $subjectADWF["subjectName"];
+                                            $subjectPass[] = $subjectADWF["subjectPass"];
+                                            $subjectNotPass[] = $subjectADWF["subjectNotPass"];
+                                            $subjectDrop[] = $subjectADWF["subjectDrop"];
                                             ?>
 
                                             <tr>
@@ -191,20 +191,20 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                            $subjectAtoDs = getCountSubjectGradeAtoDBySemesterYear($semesterYear);
-                                            $labelAtoD = [];
-                                            $subjectA = [];
-                                            $subjectB = [];
-                                            $subjectC = [];
-                                            $subjectD = [];
+                                        $subjectAtoDs = getCountSubjectGradeAtoDBySemesterYear($semesterYear);
+                                        $labelAtoD = [];
+                                        $subjectA = [];
+                                        $subjectB = [];
+                                        $subjectC = [];
+                                        $subjectD = [];
                                         ?>
                                         <?php
                                         foreach ($subjectAtoDs as $subjectAtoD) {
-                                                $labelAtoD[]=$subjectAtoD["subjectName"];
-                                                $subjectA[]=$subjectAtoD["A"];
-                                                $subjectB[]=$subjectAtoD["B"];
-                                                $subjectC[]=$subjectAtoD["C"];
-                                                $subjectD[]=$subjectAtoD["D"];
+                                            $labelAtoD[] = $subjectAtoD["subjectName"];
+                                            $subjectA[] = $subjectAtoD["A"];
+                                            $subjectB[] = $subjectAtoD["B"];
+                                            $subjectC[] = $subjectAtoD["C"];
+                                            $subjectD[] = $subjectAtoD["D"];
                                             ?>
                                             <tr>
                                                 <td>
@@ -297,11 +297,21 @@
                                             ?>
 
                                             <tr>
-                                                <td><?php echo $subjectRegisInYear["subjectName"] ?></td>
-                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["one"] ?> คน</td>
-                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["two"] ?> คน</td>
-                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["three"] ?> คน </td>
-                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["four"] ?> คน</td>
+                                                <td>
+                                                    <?php echo $subjectRegisInYear["subjectName"] ?>
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectRegisInYear["one"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectRegisInYear["two"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectRegisInYear["three"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectRegisInYear["four"] ?> คน
+                                                </td>
                                                 <!--<td style=" text-align: center;">0 คน</td>-->
                                             </tr>
                                             <?php
@@ -362,11 +372,21 @@
                                             ?>
 
                                             <tr>
-                                            <td><?php echo $subjectRegisInYear["subjectName"] ?></td>
-                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["one"] ?> คน</td>
-                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["two"] ?> คน</td>
-                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["three"] ?> คน </td>
-                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["four"] ?> คน</td>
+                                                <td>
+                                                    <?php echo $subjectRegisInYear["subjectName"] ?>
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectRegisInYear["one"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectRegisInYear["two"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectRegisInYear["three"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectRegisInYear["four"] ?> คน
+                                                </td>
                                                 <!--<td style=" text-align: center;">0 คน</td>-->
                                             </tr>
                                             <?php
@@ -427,11 +447,21 @@
                                             ?>
 
                                             <tr>
-                                            <td><?php echo $subjectRegisInYear["subjectName"] ?></td>
-                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["one"] ?> คน</td>
-                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["two"] ?> คน</td>
-                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["three"] ?> คน </td>
-                                                <td style=" text-align: center;"><?php echo $subjectRegisInYear["four"] ?> คน</td>
+                                                <td>
+                                                    <?php echo $subjectRegisInYear["subjectName"] ?>
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectRegisInYear["one"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectRegisInYear["two"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectRegisInYear["three"] ?> คน
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <?php echo $subjectRegisInYear["four"] ?> คน
+                                                </td>
                                                 <!--<td style=" text-align: center;">0 คน</td>-->
                                             </tr>
                                             <?php
@@ -473,7 +503,7 @@
     </div>
 
     <script>
-       
+
         var labelADWFs = <?php echo json_encode($labelADWFs); ?>;
 
         var subjectPass = <?php echo json_encode($subjectPass); ?>;
@@ -546,7 +576,7 @@
     </script>
 
     <script>
-        
+
         var labelAtoD = <?php echo json_encode($labelAtoD); ?>;
 
         var subjectA = <?php echo json_encode($subjectA); ?>;
